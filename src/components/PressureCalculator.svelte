@@ -1,18 +1,18 @@
-<script lang="ts">
-  import { Button, Card, Range } from 'flowbite-svelte'
+<script>
+  import { Button, Card, Range, Label } from 'flowbite-svelte';
   
-  let bottomHoleTemp = 600
-  let flow = 500
-  let mudWeight = 16
-  let viscosity = 40
+  let bottomHoleTemp = 600;
+  let flow = 500;
+  let mudWeight = 16;
+  let viscosity = 40;
 
-  $: maxWorkingPressure = 3600
-  $: differentialAdjustment = "-2% – 4%"
-  $: estimatedPressure = "3600 – 3800"
-  $: availableDiff = 0
+  $: maxWorkingPressure = 3600;
+  $: differentialAdjustment = "-2% – 4%";
+  $: estimatedPressure = "3600 – 3800";
+  $: availableDiff = 0;
 
   function handleGeneratePDF() {
-    console.log('Generating PDF...')
+    console.log('Generating PDF...');
   }
 </script>
 
@@ -21,11 +21,11 @@
     <!-- Header -->
     <div class="flex justify-between items-start mb-6">
       <h1 class="text-white text-2xl font-semibold">Off-Bottom Pressure & Derating Recommendations</h1>
-      <button class="text-gray-400 hover:text-white">
+      <Button class="text-gray-400 hover:text-white">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
-      </button>
+      </Button>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -35,9 +35,9 @@
           <div class="space-y-6">
             <!-- Bottom Hole Temperature -->
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
+              <Label class="block text-sm font-medium text-gray-300 mb-2">
                 Expected Bottom Hole Temperature
-              </label>
+              </Label>
               <div class="flex items-center gap-4">
                 <Button size="xs" class="px-2" on:click={() => bottomHoleTemp = Math.max(0, bottomHoleTemp - 1)}>-</Button>
                 <input
@@ -57,9 +57,9 @@
 
             <!-- Flow -->
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
+              <Label class="block text-sm font-medium text-gray-300 mb-2">
                 Flow (GPM)
-              </label>
+              </Label>
               <div class="flex items-center gap-4">
                 <Button size="xs" class="px-2" on:click={() => flow = Math.max(0, flow - 1)}>-</Button>
                 <input
@@ -79,9 +79,9 @@
 
             <!-- Mud Weight -->
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
+              <Label class="block text-sm font-medium text-gray-300 mb-2">
                 Mud Weight (GPM)
-              </label>
+              </Label>
               <div class="flex items-center gap-4">
                 <Button size="xs" class="px-2" on:click={() => mudWeight = Math.max(0, mudWeight - 1)}>-</Button>
                 <input
@@ -101,9 +101,9 @@
 
             <!-- Viscosity -->
             <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
+              <Label class="block text-sm font-medium text-gray-300 mb-2">
                 Viscosity (cP)
-              </label>
+              </Label>
               <div class="flex items-center gap-4">
                 <Button size="xs" class="px-2" on:click={() => viscosity = Math.max(0, viscosity - 1)}>-</Button>
                 <input
